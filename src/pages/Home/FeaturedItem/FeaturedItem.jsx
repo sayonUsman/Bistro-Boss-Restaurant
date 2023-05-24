@@ -4,7 +4,7 @@ import featuredItem from "../../../assets/featured.jpg";
 const FeaturedItem = () => {
   return (
     <div
-      className="hero h-[845px] mt-16 lg:mt-20"
+      className="hero h-[845px] mt-16 lg:mt-20 bg-fixed"
       style={{
         backgroundImage: `url(${featuredItem})`,
       }}
