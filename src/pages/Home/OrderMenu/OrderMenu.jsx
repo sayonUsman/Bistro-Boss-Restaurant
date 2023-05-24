@@ -13,13 +13,77 @@ const OrderMenu = () => {
       <Swiper
         slidesPerView={5}
         spaceBetween={25}
-        centeredSlides={true}
+        centeredSlides={false}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
         className="mySwiper"
       >
+        <SwiperSlide>
+          <img
+            src={slide1}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide2}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide3}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide4}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide1}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide2}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide3}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slide4}
+            alt="Menu Item"
+            className="w-full rounded-md lg:rounded-xl"
+          ></img>
+        </SwiperSlide>
+
         <SwiperSlide>
           <img
             src={slide1}
