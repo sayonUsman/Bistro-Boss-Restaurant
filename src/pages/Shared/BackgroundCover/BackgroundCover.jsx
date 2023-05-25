@@ -1,4 +1,4 @@
-const BackgroundCover = ({ img }) => {
+const BackgroundCover = ({ img, title, subTitle }) => {
   return (
     <div
       className="hero h-[725px]"
@@ -11,10 +11,10 @@ const BackgroundCover = ({ img }) => {
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h1 className="mb-2 lg:mb-4 text-4xl lg:text-5xl font-bold">
-            OUR MENU
+            {title}
           </h1>
 
-          <p className="mb-5 text-sm">WOULD YOU LIKE TO TRY A DISH?</p>
+          <p className="mb-5 text-sm">{subTitle}</p>
         </div>
       </div>
     </div>

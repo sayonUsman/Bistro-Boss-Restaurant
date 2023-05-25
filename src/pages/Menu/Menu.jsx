@@ -9,7 +9,11 @@ const Menu = () => {
         <title>Bistro Boss | Menu</title>
       </Helmet>
 
-      <BackgroundCover img={banner}></BackgroundCover>
+      <BackgroundCover
+        img={banner}
+        title={"OUR MENU"}
+        subTitle={"WOULD YOU LIKE TO TRY A DISH?"}
+      ></BackgroundCover>
     </div>
   );
 };
