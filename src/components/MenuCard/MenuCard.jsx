@@ -1,4 +1,4 @@
-import bg from "../../assets/menu-bg.png";
+import bg from "../../assets/bg.png";
 import logo from "../../assets/logo.png";
 
 const MenuCard = ({ items }) => {

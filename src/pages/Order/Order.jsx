@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import BackgroundCover from "../Shared/BackgroundCover/BackgroundCover";
 import banner from "../../assets/menu-banner.jpg";
-import bg from "../../assets/menu-bg.png";
+import bg from "../../assets/bg.png";
 import useMenu from "../../hooks/useMenu";
 import TabItems from "./TabItems/TabItems";
 
