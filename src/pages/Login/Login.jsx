@@ -16,7 +16,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isDisabled, SetIsDisabled] = useState(true);
 
@@ -36,15 +35,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    setMessage("");
     setErrorMessage("");
 
     loginWithEmailAndPassword(email, password)
       .then(() => {
         form.reset();
-        setMessage("Successfully signed in");
-        navigate(from, { replace: true });
         SetIsDisabled(true);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -158,16 +155,6 @@ const Login = () => {
           </Link>
         </div>
       </div>
-
-      {message && (
-        <div className="toast toast-end">
-          <div className="alert alert-success">
-            <div>
-              <span>{message}</span>
-            </div>
-          </div>
-        </div>
-      )}
 
       {errorMessage && (
         <div className="toast toast-end">

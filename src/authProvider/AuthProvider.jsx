@@ -28,7 +28,6 @@ const AuthProvider = ({ children }) => {
   }, [auth]);
 
   const loggedInUser = () => {
-    setIsLoading(true);
     const user = auth.currentUser;
 
     if (user !== null) {
