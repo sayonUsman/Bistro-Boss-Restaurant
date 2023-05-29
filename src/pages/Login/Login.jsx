@@ -6,6 +6,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   useEffect(() => loadCaptchaEnginge(6), []);
@@ -38,86 +39,103 @@ const Login = () => {
           backgroundImage: `url(${bg})`,
         }}
       >
-        <div className="hero w-9/12 lg:w-[925px] rounded-lg shadow-lg shadow-zinc-900">
-          <div className="hero-content flex-col lg:flex-row">
-            <div className="lg:w-9/12">
-              <img src={authImg} alt="Image" />
-            </div>
-
-            <form
-              className="card rounded-lg flex-shrink-0 w-full max-w-sm"
-              onSubmit={handleSubmit}
-            >
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-
-                <input
-                  type="email"
-                  placeholder="email"
-                  id="email"
-                  required
-                  className="input input-bordered"
-                />
+        <div className="hero-content flex-col">
+          <div className="hero w-9/12 lg:w-[925px] rounded-lg shadow-lg shadow-zinc-900">
+            <div className="hero-content flex-col lg:flex-row">
+              <div className="lg:w-9/12">
+                <img src={authImg} alt="Image" />
               </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-
-                <input
-                  type="password"
-                  placeholder="password"
-                  id="password"
-                  required
-                  className="input input-bordered"
-                />
-
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-              </div>
-
-              <div className="form-control">
-                <label className="label mb-3">
-                  <LoadCanvasTemplate />
-                </label>
-
-                <input
-                  type="text"
-                  ref={captchaRef}
-                  placeholder="Type the captcha here"
-                  id="captcha"
-                  required
-                  className="input input-bordered"
-                />
-
-                {isDisabled && (
-                  <label className="label label-text-alt">
-                    To Verify Your Captcha
-                    <button
-                      className="link link-hover text-red-500"
-                      onClick={() => verifyCaptcha()}
-                    >
-                      Click Here
-                    </button>
+              <form
+                className="card rounded-lg flex-shrink-0 w-full max-w-sm"
+                onSubmit={handleSubmit}
+              >
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
                   </label>
-                )}
-              </div>
 
-              <div className="form-control mt-10">
-                <input
-                  className="btn bg-[#D1A054]"
-                  type="submit"
-                  value="Login"
-                  disabled={isDisabled}
-                />
-              </div>
-            </form>
+                  <input
+                    type="email"
+                    placeholder="email"
+                    id="email"
+                    required
+                    className="input input-bordered"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+
+                  <input
+                    type="password"
+                    placeholder="password"
+                    id="password"
+                    required
+                    className="input input-bordered"
+                  />
+
+                  <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">
+                      Forgot password?
+                    </a>
+                  </label>
+                </div>
+
+                <div className="form-control">
+                  <label className="label mb-3">
+                    <LoadCanvasTemplate />
+                  </label>
+
+                  <input
+                    type="text"
+                    ref={captchaRef}
+                    placeholder="Type the captcha here"
+                    id="captcha"
+                    required
+                    className="input input-bordered"
+                  />
+
+                  {isDisabled && (
+                    <label className="label label-text-alt">
+                      To Verify Your Captcha
+                      <button
+                        className="link link-hover text-red-500"
+                        onClick={() => verifyCaptcha()}
+                      >
+                        Click Here
+                      </button>
+                    </label>
+                  )}
+                </div>
+
+                <div className="form-control mt-10">
+                  <input
+                    className="btn bg-[#D1A054]"
+                    type="submit"
+                    value="Login"
+                    disabled={isDisabled}
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div className="text-center mt-10 lg:mt-14">
+            <p className="mb-2">
+              New here?{" "}
+              <span>
+                <Link to="/signUp" className="link link-hover">
+                  Create a New Account
+                </Link>
+              </span>
+            </p>
+
+            <Link to="/" className="link link-hover">
+              Back to Home
+            </Link>
           </div>
         </div>
       </div>
