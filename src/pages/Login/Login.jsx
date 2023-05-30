@@ -19,14 +19,18 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isDisabled, SetIsDisabled] = useState(true);
 
-  const verifyCaptcha = () => {
+  const verifyCaptcha = (event) => {
     const user_captcha_value = captchaRef.current.value;
+    setErrorMessage("");
 
     if (validateCaptcha(user_captcha_value)) {
       SetIsDisabled(false);
     } else {
       SetIsDisabled(true);
+      setErrorMessage("Captcha validation failed.");
     }
+
+    event.preventDefault();
   };
 
   const handleSubmit = (event) => {
@@ -120,7 +124,7 @@ const Login = () => {
                     To Verify Your Captcha
                     <button
                       className="link link-hover text-red-500"
-                      onClick={() => verifyCaptcha()}
+                      onClick={verifyCaptcha}
                     >
                       Click Here
                     </button>
