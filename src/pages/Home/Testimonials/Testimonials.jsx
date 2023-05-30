@@ -26,8 +26,8 @@ const Testimonials = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
-            <div className="flex flex-col justify-center items-center md:h-72 mx-16 mb-3 md:mb-0">
-              <div className="flex justify-center mt-1">
+            <div className="text-center">
+              <div className="flex justify-center">
                 <Rating
                   style={{ maxWidth: 180 }}
                   value={review.rating}
@@ -35,10 +35,12 @@ const Testimonials = () => {
                 />
               </div>
 
-              <p className="mt-5 lg:px-24">{review.details}</p>
+              <p className="mt-4 text-3xl text-[#CD9003]">{review.name}</p>
 
-              <div className="flex justify-center">
-                <p className="mt-7 text-3xl text-[#CD9003]">{review.name}</p>
+              <div className="sm:w-9/12 h-24 overflow-y-auto mx-auto mt-3 mb-16 lg:mb-20 px-7 md:px-0">
+                <div className="hero-content">
+                  <p className="text-justify">{review.details}</p>
+                </div>
               </div>
             </div>
           </SwiperSlide>
