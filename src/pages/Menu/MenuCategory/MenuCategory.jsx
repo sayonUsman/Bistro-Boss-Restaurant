@@ -25,7 +25,7 @@ const MenuCategory = ({ img, title, subTitle, items }) => {
 
       <MenuCard items={items}></MenuCard>
 
-      <Link to="/order">
+      <Link to={`/order/${title}`}>
         <button className="flex mx-auto btn rounded-md btn-outline border-0 border-b-4 border-[#ff9000] hover:bg-[#ff9000] mt-5 lg:mt-7 mb-14 md:mb-16">
           Order Now
         </button>

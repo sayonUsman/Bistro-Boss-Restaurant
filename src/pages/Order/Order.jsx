@@ -6,9 +6,13 @@ import banner from "../../assets/menu-banner.jpg";
 import bg from "../../assets/bg.png";
 import useMenu from "../../hooks/useMenu";
 import TabItems from "./TabItems/TabItems";
+import { useParams } from "react-router-dom";
 
 const Order = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ["SALADS", "PIZZA", "SOUPS", "DESSERTS", "DRINKS"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
   const salads = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
