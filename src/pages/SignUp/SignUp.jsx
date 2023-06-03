@@ -4,11 +4,13 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { getAuth, updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { createNewUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const auth = getAuth();
 
   const {
     register,
@@ -19,7 +21,16 @@ const SignUp = () => {
   const onSubmit = (user) => {
     createNewUser(user.email, user.password)
       .then(() => {
-        navigate("/");
+        updateProfile(auth.currentUser, {
+          displayName: user.name,
+          photoURL: user.photoURL,
+        })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            setErrorMessage(error.message);
+          });
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -60,6 +71,20 @@ const SignUp = () => {
                 {errors.name && (
                   <span className="text-red-500 pl-2">Name is required.</span>
                 )}
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Profile Picture</span>
+                </label>
+
+                <input
+                  type="url"
+                  {...register("photoURL")}
+                  placeholder="photo url"
+                  id="photoURL"
+                  className="input input-bordered"
+                />
               </div>
 
               <div className="form-control">
