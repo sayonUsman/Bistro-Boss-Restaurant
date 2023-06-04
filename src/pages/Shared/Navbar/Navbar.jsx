@@ -171,7 +171,7 @@ const Navbar = () => {
           >
             <li>
               <NavLink
-                to="/dashboard"
+                to="/dashboard/profile"
                 className="justify-between btn-ghost link link-hover mb-1"
               >
                 {userDetails[0] ? userDetails[0] : userDetails[1]}

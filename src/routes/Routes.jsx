@@ -30,15 +30,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Secondary></Secondary>,
+    element: (
+      <PrivateRoutes>
+        <Secondary></Secondary>
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "/dashboard",
-        element: (
-          <PrivateRoutes>
-            <Dashboard></Dashboard>
-          </PrivateRoutes>
-        ),
+        element: <Dashboard></Dashboard>,
       },
     ],
   },

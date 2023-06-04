@@ -16,7 +16,7 @@ const Secondary = () => {
         <li className="text-lg font-semibold">RESTAURANT</li>
 
         <li className="mt-16 mb-1 link link-hover hover:text-white">
-          <NavLink to="">
+          <NavLink to="profile">
             <CgProfile></CgProfile> My Profile
           </NavLink>
         </li>
