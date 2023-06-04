@@ -6,6 +6,8 @@ import Order from "../pages/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Secondary from "../layouts/Secondary";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import PrivateRoutes from "../privateRoutes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,16 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Secondary></Secondary>,
-    children: [{}],
+    children: [
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoutes>
+            <Dashboard></Dashboard>
+          </PrivateRoutes>
+        ),
+      },
+    ],
   },
   {
     path: "/login",

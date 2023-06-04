@@ -139,7 +139,7 @@ const Navbar = () => {
               <span className="text-info">Subtotal: $00</span>
 
               <div className="text-center">
-                <Link to="/cart" className="link link-hover">
+                <Link to="/dashboard/cart" className="link link-hover">
                   View cart
                 </Link>
               </div>
@@ -154,7 +154,7 @@ const Navbar = () => {
             tabIndex={0}
             className="btn btn-ghost btn-circle avatar online"
           >
-            <div className=" rounded-full">
+            <div className="rounded-full">
               <img
                 src={
                   userDetails[2]
@@ -171,7 +171,7 @@ const Navbar = () => {
           >
             <li>
               <NavLink
-                to="/profile"
+                to="/dashboard"
                 className="justify-between btn-ghost link link-hover mb-1"
               >
                 {userDetails[0] ? userDetails[0] : userDetails[1]}
