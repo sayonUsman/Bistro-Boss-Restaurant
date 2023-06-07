@@ -15,6 +15,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -26,7 +27,7 @@ const SignUp = () => {
           photoURL: user.photoURL,
         })
           .then(() => {
-            navigate("/");
+            reset(), navigate("/");
           })
           .catch((error) => {
             setErrorMessage(error.message);
