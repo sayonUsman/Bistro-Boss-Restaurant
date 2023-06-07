@@ -9,7 +9,7 @@ import slide6 from "../../../assets/banner/slide-06.png";
 
 const Banner = () => {
   return (
-    <Carousel autoPlay infiniteLoop interval={4000}>
+    <Carousel autoPlay infiniteLoop interval={3000}>
       <div>
         <img src={slide1} alt="Slider Image" />
       </div>
