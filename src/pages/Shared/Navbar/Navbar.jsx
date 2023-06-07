@@ -15,7 +15,7 @@ const Navbar = () => {
   const navbarContent = (
     <>
       <li>
-        <NavLink to="/" className="mb-1 lg:mb-0 lg:mr-1 link link-hover">
+        <NavLink to="/" className="mb-1 xl:mb-0 xl:mr-1 link link-hover">
           Home
         </NavLink>
       </li>
@@ -23,14 +23,14 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/dashboard"
-          className="mb-1 lg:mb-0 lg:mr-1 link link-hover"
+          className="mb-1 xl:mb-0 xl:mr-1 link link-hover"
         >
           Dashboard
         </NavLink>
       </li>
 
       <li>
-        <NavLink to="/menu" className="mb-1 lg:mb-0 lg:mr-1 link link-hover">
+        <NavLink to="/menu" className="mb-1 xl:mb-0 xl:mr-1 link link-hover">
           Our Menu
         </NavLink>
       </li>
@@ -38,14 +38,14 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/order/SALADS"
-          className="mb-1 lg:mb-0 lg:mr-1 link link-hover"
+          className="mb-1 xl:mb-0 xl:mr-1 link link-hover"
         >
           Order
         </NavLink>
       </li>
 
       <li>
-        <NavLink to="/contact" className="mb-1 lg:mb-0 lg:mr-1 link link-hover">
+        <NavLink to="/contact" className="mb-1 xl:mb-0 xl:mr-1 link link-hover">
           Contact
         </NavLink>
       </li>
