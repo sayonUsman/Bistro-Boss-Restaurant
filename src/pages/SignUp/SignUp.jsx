@@ -5,6 +5,7 @@ import { AuthContext } from "../../authProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createNewUser } = useContext(AuthContext);
@@ -19,15 +20,22 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (user) => {
-    createNewUser(user.email, user.password)
+  const onSubmit = (newUser) => {
+    createNewUser(newUser.email, newUser.password)
       .then(() => {
         updateProfile(auth.currentUser, {
-          displayName: user.name,
-          photoURL: user.photoURL,
+          displayName: newUser.name,
+          photoURL: newUser.url,
         })
           .then(() => {
-            reset(), navigate("/");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "New user has been successfully created",
+              showConfirmButton: true,
+            });
+
+            navigate("/");
           })
           .catch((error) => {
             setErrorMessage(error.message);
@@ -36,6 +44,8 @@ const SignUp = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
+
+    reset();
   };
 
   return (

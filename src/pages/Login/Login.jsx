@@ -8,6 +8,7 @@ import {
 import { useEffect, useContext, useRef, useState } from "react";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   useEffect(() => loadCaptchaEnginge(6), []);
@@ -46,6 +47,13 @@ const Login = () => {
         form.reset();
         SetIsDisabled(true);
         navigate(from, { replace: true });
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Logged in has been done successfully",
+          showConfirmButton: true,
+        });
       })
       .catch((error) => {
         setErrorMessage(error.message);

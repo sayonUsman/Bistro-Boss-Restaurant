@@ -1,15 +1,29 @@
-import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut, loggedInUser } = useContext(AuthContext);
   const userDetails = loggedInUser();
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogOut = () => {
     logOut()
-      .than(() => {})
-      .catch(() => {});
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Logged out has been done successfully",
+          showConfirmButton: true,
+        });
+
+        navigate("/login");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
 
   const navbarContent = (
@@ -197,6 +211,16 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="toast toast-end">
+          <div className="alert alert-error">
+            <div>
+              <span>{errorMessage}</span>
+            </div>
+          </div>
         </div>
       )}
     </div>
