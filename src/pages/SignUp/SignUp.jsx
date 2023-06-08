@@ -91,9 +91,9 @@ const SignUp = () => {
 
                 <input
                   type="url"
-                  {...register("photoURL")}
+                  {...register("url")}
                   placeholder="photo url"
-                  id="photoURL"
+                  id="url"
                   className="input input-bordered"
                 />
               </div>
