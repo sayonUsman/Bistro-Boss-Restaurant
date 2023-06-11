@@ -75,7 +75,6 @@ const SignUp = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="name"
-                  id="name"
                   className="input input-bordered"
                 />
 
@@ -93,7 +92,6 @@ const SignUp = () => {
                   type="url"
                   {...register("url")}
                   placeholder="photo url"
-                  id="url"
                   className="input input-bordered"
                 />
               </div>
@@ -107,7 +105,6 @@ const SignUp = () => {
                   type="email"
                   {...register("email", { required: true })}
                   placeholder="email"
-                  id="email"
                   className="input input-bordered"
                 />
 
@@ -123,21 +120,31 @@ const SignUp = () => {
 
                 <input
                   type="password"
-                  {...register("password", { required: true, minLength: 6 })}
                   placeholder="password"
-                  id="password"
                   className="input input-bordered"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$%^&*])/,
+                  })}
                 />
 
                 {errors.password?.type === "required" && (
-                  <span className="text-red-500 pl-2">
+                  <span className="text-red-500 pt-1 pl-1">
                     Password is required.
                   </span>
                 )}
 
                 {errors.password?.type === "minLength" && (
-                  <span className="text-red-500 pl-2">
-                    Password must be 6 characters.
+                  <span className="text-red-500 pt-1 pl-1">
+                    Password must be six characters.
+                  </span>
+                )}
+
+                {errors.password?.type === "pattern" && (
+                  <span className="text-red-500 pt-1 pl-1">
+                    Password must have at least one capital letter and one
+                    special character.
                   </span>
                 )}
               </div>
