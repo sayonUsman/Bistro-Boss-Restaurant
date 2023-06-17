@@ -9,10 +9,13 @@ import { useEffect, useContext, useRef, useState } from "react";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/Fc";
+import { IconContext } from "react-icons";
 
 const Login = () => {
   useEffect(() => loadCaptchaEnginge(6), []);
-  const { loginWithEmailAndPassword } = useContext(AuthContext);
+  const { loginWithEmailAndPassword, loginWithGoogle } =
+    useContext(AuthContext);
   const captchaRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,6 +61,27 @@ const Login = () => {
       .catch((error) => {
         setErrorMessage(error.message);
         SetIsDisabled(true);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    setErrorMessage("");
+
+    loginWithGoogle()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Welcome Back.",
+          text: "Logged in has been done successfully.",
+          showConfirmButton: true,
+          timer: 2000,
+        });
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
       });
   };
 
@@ -152,7 +176,24 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="text-center mt-10 lg:mt-14">
+        <p className="mt-5 text-center text-xl">
+          Or
+          <br />
+          Continue With
+        </p>
+
+        <IconContext.Provider value={{ size: "45px" }}>
+          <div className="flex mx-auto mt-3">
+            <button
+              className="btn btn-circle bg-transparent"
+              onClick={handleGoogleLogin}
+            >
+              <FcGoogle></FcGoogle>
+            </button>
+          </div>
+        </IconContext.Provider>
+
+        <div className="text-center mt-5">
           <p className="mb-2">
             New here?{" "}
             <span>

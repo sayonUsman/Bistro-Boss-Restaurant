@@ -6,9 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { IconContext } from "react-icons";
+import { FcGoogle } from "react-icons/Fc";
 
 const SignUp = () => {
-  const { createNewUser } = useContext(AuthContext);
+  const { createNewUser, loginWithGoogle } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const auth = getAuth();
@@ -46,6 +48,27 @@ const SignUp = () => {
       });
 
     reset();
+  };
+
+  const handleGoogleLogin = () => {
+    setErrorMessage("");
+
+    loginWithGoogle()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Welcome.",
+          text: "Logged in has been done successfully.",
+          showConfirmButton: true,
+          timer: 2000,
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
 
   return (
@@ -164,7 +187,24 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="text-center mt-10 lg:mt-14">
+        <p className="mt-5 text-center text-xl">
+          Or
+          <br />
+          Continue With
+        </p>
+
+        <IconContext.Provider value={{ size: "45px" }}>
+          <div className="flex mx-auto mt-3">
+            <button
+              className="btn btn-circle bg-transparent"
+              onClick={handleGoogleLogin}
+            >
+              <FcGoogle></FcGoogle>
+            </button>
+          </div>
+        </IconContext.Provider>
+
+        <div className="text-center mt-5">
           <p className="mb-2">
             Already registered?{" "}
             <span>
