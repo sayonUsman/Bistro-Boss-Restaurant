@@ -14,7 +14,8 @@ const Navbar = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Logged out has been done successfully",
+          title: "Done.",
+          text: "Logged out has been done successfully.",
           showConfirmButton: true,
         });
       })

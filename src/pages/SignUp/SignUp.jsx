@@ -33,8 +33,10 @@ const SignUp = () => {
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "New user has been successfully created",
+              title: "Welcome.",
+              text: "Your account has been created successfully.",
               showConfirmButton: true,
+              timer: 2000,
             });
 
             navigate("/");
