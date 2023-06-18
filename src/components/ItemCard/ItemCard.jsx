@@ -1,4 +1,57 @@
+import { useContext } from "react";
+import { AuthContext } from "../../authProvider/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const ItemCard = ({ item }) => {
+  const { user, loggedInUser } = useContext(AuthContext);
+  const userDetails = loggedInUser();
+  const navigate = useNavigate();
+
+  const manageOrders = (itemId) => {
+    if (user) {
+      const orders = {
+        customerName: userDetails[0],
+        customerEmail: userDetails[1],
+        itemId: itemId,
+        itemName: item.name,
+        price: item.price,
+      };
+
+      fetch("http://localhost:5000/selected-orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orders),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Added",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Oops!",
+        text: "To ensure the orders please login or sign up.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+    }
+  };
+
   return (
     <div className="card rounded-md card-compact w-72 sm:w-96 bg-transparent shadow-lg shadow-black">
       <figure>
@@ -14,7 +67,9 @@ const ItemCard = ({ item }) => {
         <p className="text-left">{item.descriptions.slice(0, 125) + "..."}</p>
 
         <div className="card-actions justify-end">
-          <button className="btn">Add To Cart</button>
+          <button className="btn" onClick={() => manageOrders(item._id)}>
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
