@@ -8,6 +8,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Secondary from "../layouts/Secondary";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import PrivateRoutes from "../privateRoutes/PrivateRoutes";
+import Error_404 from "../pages/Error_404/Error_404";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/signUp",
     element: <SignUp></SignUp>,
+  },
+  {
+    path: "*",
+    element: <Error_404></Error_404>,
   },
 ]);
 
