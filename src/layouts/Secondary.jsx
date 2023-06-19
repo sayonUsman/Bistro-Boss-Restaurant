@@ -11,7 +11,7 @@ import { AiFillShopping } from "react-icons/Ai";
 const Secondary = () => {
   const navbarContent = (
     <>
-      <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-base-content">
+      <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-black">
         <li className="text-3xl font-bold">BISTRO BOSS</li>
         <li className="text-lg font-semibold">RESTAURANT</li>
 
