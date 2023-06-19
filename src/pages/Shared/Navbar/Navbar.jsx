@@ -2,11 +2,16 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../authProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useSelectedOrders from "../../../hooks/useSelectedOrders";
 
 const Navbar = () => {
   const { user, logOut, loggedInUser } = useContext(AuthContext);
   const userDetails = loggedInUser();
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedOrders] = useSelectedOrders();
+  const subTotal = selectedOrders
+    ?.reduce((sum, item) => sum + item.price, 0)
+    .toFixed(2);
 
   const handleLogOut = () => {
     logOut()
@@ -140,7 +145,9 @@ const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="badge badge-sm indicator-item">0</span>
+              <span className="badge badge-sm indicator-item">
+                {selectedOrders?.length}
+              </span>
             </div>
           </label>
 
@@ -149,8 +156,8 @@ const Navbar = () => {
             className="mt-3 card rounded-md card-compact dropdown-content w-52 bg-black bg-opacity-50 text-white"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">0 Items</span>
-              <span className="text-info">Subtotal: $00</span>
+              <span className="font-bold text-lg">{`${selectedOrders?.length} Items`}</span>
+              <span className="text-info">{`Subtotal: $${subTotal}`}</span>
 
               <div className="text-center">
                 <Link to="/dashboard/cart" className="link link-hover">

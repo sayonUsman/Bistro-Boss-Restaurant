@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../authProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useSelectedOrders from "../../hooks/useSelectedOrders";
 
 const ItemCard = ({ item }) => {
   const { user, loggedInUser } = useContext(AuthContext);
   const userDetails = loggedInUser();
   const navigate = useNavigate();
+  const [, refetch] = useSelectedOrders();
 
   const manageOrders = (itemId) => {
     if (user) {
@@ -26,6 +28,8 @@ const ItemCard = ({ item }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.acknowledged) {
+            refetch(); // To add the item in navbar cart
+
             Swal.fire({
               position: "top-end",
               icon: "success",
