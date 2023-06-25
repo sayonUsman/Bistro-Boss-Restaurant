@@ -59,7 +59,7 @@ const Navbar = () => {
           to="/order/SALADS"
           className="mb-1 xl:mb-0 xl:mr-1 link link-hover"
         >
-          Order
+          Orders
         </NavLink>
       </li>
 

@@ -7,8 +7,30 @@ import { MdReviews } from "react-icons/Md";
 import { SlCalender } from "react-icons/Sl";
 import { HiHome, HiMenu, HiMail } from "react-icons/Hi";
 import { AiFillShopping } from "react-icons/Ai";
+import { useContext, useState } from "react";
+import { AuthContext } from "../authProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Secondary = () => {
+  const { logOut } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Done.",
+          text: "Logged out has been done successfully.",
+          showConfirmButton: true,
+        });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
   const navbarContent = (
     <>
       <ul className="menu p-4 w-80 h-full bg-[#D1A054] text-black">
@@ -67,13 +89,19 @@ const Secondary = () => {
 
         <li className="mb-1 link link-hover hover:text-white">
           <NavLink to="/order/SALADS">
-            <AiFillShopping></AiFillShopping> Order
+            <AiFillShopping></AiFillShopping> Orders
+          </NavLink>
+        </li>
+
+        <li className="mb-1 link link-hover hover:text-white">
+          <NavLink to="/contact">
+            <HiMail></HiMail> Contact
           </NavLink>
         </li>
 
         <li className="link link-hover hover:text-white">
-          <NavLink to="/contact">
-            <HiMail></HiMail> Contact
+          <NavLink to="/login" onClick={handleLogOut}>
+            <HiMail></HiMail> Log Out
           </NavLink>
         </li>
       </ul>
@@ -130,6 +158,16 @@ const Secondary = () => {
 
         <Outlet></Outlet>
       </div>
+
+      {errorMessage && (
+        <div className="toast toast-end">
+          <div className="alert alert-error">
+            <div>
+              <span>{errorMessage}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
