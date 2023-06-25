@@ -80,7 +80,7 @@ const SignUp = () => {
         backgroundImage: `url(${bg})`,
       }}
     >
-      <div className="hero-content flex-col">
+      <div className="hero-content flex-col text-black">
         <div className="hero w-9/12 lg:w-[925px] rounded-lg shadow-lg shadow-zinc-900">
           <div className="hero-content flex-col lg:flex-row">
             <div className="lg:w-9/12">
@@ -100,7 +100,7 @@ const SignUp = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="name"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
 
                 {errors.name && (
@@ -119,7 +119,7 @@ const SignUp = () => {
                   type="url"
                   {...register("url")}
                   placeholder="photo url"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
               </div>
 
@@ -132,7 +132,7 @@ const SignUp = () => {
                   type="email"
                   {...register("email", { required: true })}
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
 
                 {errors.email && (
@@ -150,7 +150,7 @@ const SignUp = () => {
                 <input
                   type="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                   {...register("password", {
                     required: true,
                     minLength: 6,

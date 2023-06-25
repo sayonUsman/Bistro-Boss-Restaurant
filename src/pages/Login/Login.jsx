@@ -94,7 +94,7 @@ const Login = () => {
         backgroundImage: `url(${bg})`,
       }}
     >
-      <div className="hero-content flex-col">
+      <div className="hero-content flex-col text-black">
         <div className="hero w-9/12 lg:w-[925px] rounded-lg shadow-lg shadow-zinc-900">
           <div className="hero-content flex-col lg:flex-row">
             <div className="lg:w-9/12">
@@ -115,7 +115,7 @@ const Login = () => {
                   placeholder="email"
                   id="email"
                   required
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
               </div>
 
@@ -129,7 +129,7 @@ const Login = () => {
                   placeholder="password"
                   id="password"
                   required
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
 
                 <label className="label">
@@ -150,7 +150,7 @@ const Login = () => {
                   placeholder="Type the captcha here"
                   id="captcha"
                   required
-                  className="input input-bordered"
+                  className="input input-bordered bg-white"
                 />
 
                 {isDisabled && (
