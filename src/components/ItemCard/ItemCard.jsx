@@ -20,7 +20,7 @@ const ItemCard = ({ item }) => {
         price: item.price,
       };
 
-      fetch("http://localhost:5000/selected-orders", {
+      fetch("https://bistro-boss-restaurant-two.vercel.app/selected-orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orders),

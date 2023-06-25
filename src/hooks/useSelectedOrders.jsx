@@ -12,7 +12,7 @@ const useSelectedOrders = () => {
 
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/selected-orders?email=${email}`
+        `https://bistro-boss-restaurant-two.vercel.app/selected-orders?email=${email}`
       );
       return res.json();
     },
