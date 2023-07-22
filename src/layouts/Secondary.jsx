@@ -93,12 +93,6 @@ const Secondary = () => {
           </NavLink>
         </li>
 
-        <li className="mb-1 link link-hover hover:text-white">
-          <NavLink to="/contact">
-            <HiMail></HiMail> Contact
-          </NavLink>
-        </li>
-
         <li className="link link-hover hover:text-white">
           <NavLink to="/login" onClick={handleLogOut}>
             <HiMail></HiMail> Log Out

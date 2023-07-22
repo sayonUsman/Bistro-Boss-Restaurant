@@ -63,12 +63,6 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      <li>
-        <NavLink to="/contact" className="mb-1 xl:mb-0 xl:mr-1 link link-hover">
-          Contact
-        </NavLink>
-      </li>
-
       {user ? (
         <li>
           <NavLink
