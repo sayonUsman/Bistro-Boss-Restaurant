@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import BackgroundCover from "../Shared/BackgroundCover/BackgroundCover";
-import banner from "../../assets/menu-banner.jpg";
+import banner from "../../assets/order-banner.jpg";
 import bg from "../../assets/bg.png";
 import useMenu from "../../hooks/useMenu";
 import TabItems from "./TabItems/TabItems";
